@@ -79,8 +79,7 @@ echo -e "${YELLOW}[+] Instalando herramientas AD y post-explotación...${RESET}"
 git clone https://github.com/BloodHoundAD/BloodHound /opt/BloodHound
 git clone https://github.com/fox-it/mitm6.git /opt/mitm6
 git clone https://github.com/gentilkiwi/mimikatz.git /opt/mimikatz
-git clone https://github.com/byt3bl33d3r/NetExec /opt/NetExec
-pip3 install -r /opt/NetExec/requirements.txt
+
 
 # =========================================
 # 5. Scripts de enumeración
@@ -108,41 +107,5 @@ echo -e "${YELLOW}[+] Actualizando Metasploit, searchsploit y msfvenom...${RESET
 msfupdate
 searchsploit -u
 
-# =========================================
-# 8. Configuración de Firefox Favoritos y accesos directos
-# =========================================
-DESKTOP_DIR=$(xdg-user-dir DESKTOP)
-FAVORITOS=(
-"https://gtfobins.github.io"
-"https://blog.g0tmi1k.com/2011/08/basic-linux-privilege-escalation/"
-"https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Linux%20-%20Privilege%20Escalation.md"
-"https://sushant747.gitbooks.io/total-oscp-guide/content/privilege_escalation_-_linux.html"
-"https://github.com/lucyoa/kernel-exploits"
-)
 
-echo -e "${YELLOW}[+] Creando accesos directos en escritorio...${RESET}"
-for link in "${FAVORITOS[@]}"; do
-    name=$(basename "$link")
-    echo "[Desktop Entry]
-Name=$name
-Exec=xdg-open $link
-Type=Application
-Icon=web-browser
-Terminal=false" > "$DESKTOP_DIR/$name.desktop"
-    chmod +x "$DESKTOP_DIR/$name.desktop"
-done
-
-# =========================================
-# 9. Prompt personalizado
-# =========================================
-echo -e "${YELLOW}[+] Configurando prompt${RESET}"
-cat << 'EOF' >> ~/.bashrc
-
-
-EOF
-source ~/.bashrc
-
-# =========================================
-# 10. Finalización
-# =========================================
 echo -e "${GREEN}[✓] Instalación completada. PNPT Ready - Ghostface-Bytes${RESET}"
