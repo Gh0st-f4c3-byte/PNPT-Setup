@@ -16,31 +16,17 @@ RESET="\e[0m"
 clear
 echo -e "${RED}"
 cat << "EOF"
-#                                                                                                                                                                                                                        
-#                                                                                                                                                                                                                        
-#  PPPPPPPPPPPPPPPPP   NNNNNNNN        NNNNNNNNPPPPPPPPPPPPPPPPP   TTTTTTTTTTTTTTTTTTTTTTT                              SSSSSSSSSSSSSSS                              tttt                                                
-#  P::::::::::::::::P  N:::::::N       N::::::NP::::::::::::::::P  T:::::::::::::::::::::T                            SS:::::::::::::::S                          ttt:::t                                                
-#  P::::::PPPPPP:::::P N::::::::N      N::::::NP::::::PPPPPP:::::P T:::::::::::::::::::::T                           S:::::SSSSSS::::::S                          t:::::t                                                
-#  PP:::::P     P:::::PN:::::::::N     N::::::NPP:::::P     P:::::PT:::::TT:::::::TT:::::T                           S:::::S     SSSSSSS                          t:::::t                                                
-#    P::::P     P:::::PN::::::::::N    N::::::N  P::::P     P:::::PTTTTTT  T:::::T  TTTTTT                           S:::::S                eeeeeeeeeeee    ttttttt:::::ttttttt    uuuuuu    uuuuuu  ppppp   ppppppppp   
-#    P::::P     P:::::PN:::::::::::N   N::::::N  P::::P     P:::::P        T:::::T                                   S:::::S              ee::::::::::::ee  t:::::::::::::::::t    u::::u    u::::u  p::::ppp:::::::::p  
-#    P::::PPPPPP:::::P N:::::::N::::N  N::::::N  P::::PPPPPP:::::P         T:::::T                                    S::::SSSS          e::::::eeeee:::::eet:::::::::::::::::t    u::::u    u::::u  p:::::::::::::::::p 
-#    P:::::::::::::PP  N::::::N N::::N N::::::N  P:::::::::::::PP          T:::::T              ---------------        SS::::::SSSSS    e::::::e     e:::::etttttt:::::::tttttt    u::::u    u::::u  pp::::::ppppp::::::p
-#    P::::PPPPPPPPP    N::::::N  N::::N:::::::N  P::::PPPPPPPPP            T:::::T              -:::::::::::::-          SSS::::::::SS  e:::::::eeeee::::::e      t:::::t          u::::u    u::::u   p:::::p     p:::::p
-#    P::::P            N::::::N   N:::::::::::N  P::::P                    T:::::T              ---------------             SSSSSS::::S e:::::::::::::::::e       t:::::t          u::::u    u::::u   p:::::p     p:::::p
-#    P::::P            N::::::N    N::::::::::N  P::::P                    T:::::T                                               S:::::Se::::::eeeeeeeeeee        t:::::t          u::::u    u::::u   p:::::p     p:::::p
-#    P::::P            N::::::N     N:::::::::N  P::::P                    T:::::T                                               S:::::Se:::::::e                 t:::::t    ttttttu:::::uuuu:::::u   p:::::p    p::::::p
-#  PP::::::PP          N::::::N      N::::::::NPP::::::PP                TT:::::::TT                                 SSSSSSS     S:::::Se::::::::e                t::::::tttt:::::tu:::::::::::::::uu p:::::ppppp:::::::p
-#  P::::::::P          N::::::N       N:::::::NP::::::::P                T:::::::::T                                 S::::::SSSSSS:::::S e::::::::eeeeeeee        tt::::::::::::::t u:::::::::::::::u p::::::::::::::::p 
-#  P::::::::P          N::::::N        N::::::NP::::::::P                T:::::::::T                                 S:::::::::::::::SS   ee:::::::::::::e          tt:::::::::::tt  uu::::::::uu:::u p::::::::::::::pp  
-#  PPPPPPPPPP          NNNNNNNN         NNNNNNNPPPPPPPPPP                TTTTTTTTTTT                                  SSSSSSSSSSSSSSS       eeeeeeeeeeeeee            ttttttttttt      uuuuuuuu  uuuu p::::::pppppppp    
-#                                                                                                                                                                                                     p:::::p            
-#                                                                                                                                                                                                     p:::::p            
-#                                                                                                                                                                                                    p:::::::p           
-#                                                                                                                                                                                                    p:::::::p           
-#                                                                                                                                                                                                    p:::::::p           
-#                                                                                                                                                                                                    ppppppppp           
-#                                                                                                                                                                                                                                                                                      
+#  $$$$$$$\  $$\   $$\ $$$$$$$\  $$$$$$$$\ 
+#  $$  __$$\ $$$\  $$ |$$  __$$\ \__$$  __|
+#  $$ |  $$ |$$$$\ $$ |$$ |  $$ |   $$ |   
+#  $$$$$$$  |$$ $$\$$ |$$$$$$$  |   $$ |   
+#  $$  ____/ $$ \$$$$ |$$  ____/    $$ |   
+#  $$ |      $$ |\$$$ |$$ |         $$ |   
+#  $$ |      $$ | \$$ |$$ |         $$ |   
+#  \__|      \__|  \__|\__|         \__|   
+#                                          
+#                                          
+#                                                                                                                                                                                                                                                                                                                          
 EOF
 echo -e "${GREEN}[+] Preparación de entorno PNPT - TCM Academy${RESET}"
 echo -e "${YELLOW}[+] Herramientas necesarias para presentar y practicar PNPT${RESET}"
