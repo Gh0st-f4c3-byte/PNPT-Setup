@@ -1,9 +1,10 @@
 #!/bin/bash
 # =========================================
-# PNPT Setup Script - Ghostface_Byte Edition
+# Ghostface-Bytes PNPT Setup Script
 # =========================================
-# Prepara Kali Linux para entrenamiento PNPT de TCM Academy
-# Incluye herramientas AD, Web, OSINT, explotación, post-explotación y reportes
+# Preparación de entorno para PNPT - TCM Academy
+# Herramientas necesarias para presentar y practicar PNPT
+# Uso ético solamente.
 # =========================================
 
 RED="\e[91m"
@@ -12,60 +13,69 @@ YELLOW="\e[93m"
 BLUE="\e[94m"
 RESET="\e[0m"
 
-echo -e "${BLUE}"
+clear
+echo -e "${RED}"
 cat << "EOF"
-   ____                _   __         __        ____         
-  / __ \___  ___ ___  / | / /__  ____/ /__     / __ \____ ___ 
- / / / / _ \/ __ `__ \/  |/ / _ \/ __  / _ \   / /_/ / __ `__ \
-/ /_/ /  __/ / / / / / /|  /  __/ /_/ /  __/  / ____/ / / / / /
-\____/\___/_/ /_/ /_/_/ |_/\___/\__,_/\___/  /_/   /_/ /_/ /_/ 
-                                                              
-        PNPT Kali Setup - Ghostface_Byte
+   ____ _               _     __             _        
+  / ___| |__   ___  ___| | __/ _| __ _  __ _| | _____ 
+ | |  _| '_ \ / _ \/ __| |/ / |_ / _` |/ _` | |/ / _ \
+ | |_| | | | |  __/ (__|   <|  _| (_| | (_| |   <  __/
+  \____|_| |_|\___|\___|_|\_\_|  \__, |\__,_|_|\_\___|
+                                 |___/                
+     ___        _       _    __ _           _           
+    / _ \ _   _| |_ ___| | _/ _(_)_ __   __| | ___ _ __ 
+   | | | | | | | __/ _ \ |/ / |_| | '_ \ / _` |/ _ \ '__|
+   | |_| | |_| | ||  __/   <|  _| | | | | (_| |  __/ |   
+    \__\_\\__,_|\__\___|_|\_\_| |_|_| |_|\__,_|\___|_|   
+                                                        
 EOF
-echo -e "${RESET}"
+echo -e "${GREEN}[+] Preparación de entorno PNPT - TCM Academy${RESET}"
+echo -e "${YELLOW}[+] Herramientas necesarias para presentar y practicar PNPT${RESET}"
+sleep 3
 
 # =========================================
-# 1. Actualizar sistema
+# 1. Actualización del sistema
 # =========================================
-echo -e "${YELLOW}[+] Actualizando sistema...${RESET}"
+echo -e "${YELLOW}[+] Actualizando sistema y repositorios extra...${RESET}"
 sudo apt update && sudo apt full-upgrade -y && sudo apt autoremove -y
+sudo apt install -y software-properties-common apt-transport-https
+sudo add-apt-repository universe
+sudo apt update
 
 # =========================================
-# 2. Herramientas esenciales
+# 2. Instalación de Java y entorno Python
+# =========================================
+echo -e "${YELLOW}[+] Instalando Java y entorno Python...${RESET}"
+sudo apt install -y default-jdk default-jre python3 python3-pip python3-venv
+
+# =========================================
+# 3. Herramientas esenciales + Web Pentest
 # =========================================
 echo -e "${YELLOW}[+] Instalando herramientas esenciales...${RESET}"
-sudo apt install -y git curl wget unzip tmux python3-pip openvpn net-tools \
+sudo apt install -y git curl wget unzip tmux openvpn net-tools \
     build-essential cmake golang gobuster dirb dirsearch \
-    nmap rustscan smbclient enum4linux crackmapexec bloodhound neo4j \
+    nmap rustscan smbclient enum4linux bloodhound neo4j \
     responder impacket-scripts evil-winrm hydra john hashcat \
     seclists wfuzz sqlmap nikto whatweb wafw00f \
-    burpsuite
+    burpsuite metasploit-framework exploitdb
 
 # =========================================
-# 3. Herramientas OSINT
+# 4. Herramientas AD y Post-explotación
 # =========================================
-echo -e "${YELLOW}[+] Instalando herramientas OSINT...${RESET}"
-pip3 install theHarvester shodan
-
-# =========================================
-# 4. Herramientas de enumeración AD
-# =========================================
-echo -e "${YELLOW}[+] Instalando herramientas Active Directory...${RESET}"
-sudo apt install -y ldap-utils crackmapexec
+echo -e "${YELLOW}[+] Instalando herramientas AD y post-explotación...${RESET}"
 git clone https://github.com/BloodHoundAD/BloodHound /opt/BloodHound
-git clone https://github.com/dirkjanm/PrivExchange.git /opt/PrivExchange
 git clone https://github.com/fox-it/mitm6.git /opt/mitm6
+git clone https://github.com/gentilkiwi/mimikatz.git /opt/mimikatz
+git clone https://github.com/byt3bl33d3r/NetExec /opt/NetExec
+pip3 install -r /opt/NetExec/requirements.txt
 
 # =========================================
-# 5. Post-Explotación Windows y Linux
+# 5. Scripts de enumeración
 # =========================================
-echo -e "${YELLOW}[+] Descargando scripts de post-explotación...${RESET}"
 mkdir -p /opt/postex
 git clone https://github.com/PowerShellMafia/PowerSploit.git /opt/postex/PowerSploit
-git clone https://github.com/411Hall/JAWS.git /opt/postex/JAWS
 git clone https://github.com/carlospolop/PEASS-ng.git /opt/postex/PEASS-ng
 git clone https://github.com/rebootuser/LinEnum.git /opt/postex/LinEnum
-git clone https://github.com/diego-treitos/linux-smart-enumeration.git /opt/postex/LSE
 
 # =========================================
 # 6. Wordlists
@@ -79,23 +89,50 @@ unzip probable.zip && rm probable.zip
 cp /usr/share/wordlists/rockyou.txt.gz . && gunzip rockyou.txt.gz
 
 # =========================================
-# 7. Alias útiles
+# 7. Actualizaciones de herramientas
 # =========================================
-echo -e "${YELLOW}[+] Configurando alias...${RESET}"
+echo -e "${YELLOW}[+] Actualizando Metasploit, searchsploit y msfvenom...${RESET}"
+msfupdate
+searchsploit -u
+
+# =========================================
+# 8. Configuración de Firefox Favoritos y accesos directos
+# =========================================
+DESKTOP_DIR=$(xdg-user-dir DESKTOP)
+FAVORITOS=(
+"https://gtfobins.github.io"
+"https://blog.g0tmi1k.com/2011/08/basic-linux-privilege-escalation/"
+"https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Linux%20-%20Privilege%20Escalation.md"
+"https://sushant747.gitbooks.io/total-oscp-guide/content/privilege_escalation_-_linux.html"
+"https://github.com/lucyoa/kernel-exploits"
+)
+
+echo -e "${YELLOW}[+] Creando accesos directos en escritorio...${RESET}"
+for link in "${FAVORITOS[@]}"; do
+    name=$(basename "$link")
+    echo "[Desktop Entry]
+Name=$name
+Exec=xdg-open $link
+Type=Application
+Icon=web-browser
+Terminal=false" > "$DESKTOP_DIR/$name.desktop"
+    chmod +x "$DESKTOP_DIR/$name.desktop"
+done
+
+# =========================================
+# 9. Prompt personalizado
+# =========================================
+echo -e "${YELLOW}[+] Configurando prompt ético y colorido...${RESET}"
 cat << 'EOF' >> ~/.bashrc
 
-# Alias personalizados PNPT
-alias ll='ls -la --color=auto'
-alias grep='grep --color=auto'
-alias pscan='nmap -Pn -sV -sC'
-alias rustscan-fast='rustscan -b 500 -a'
-alias searchsploit='searchsploit --colour'
+# Prompt personalizado Ghostface-Bytes
+PS1='\[\e[91m\][\u@\h \W]\$\[\e[0m\] '
+echo -e "\e[93m[!] Advertencia: Uso exclusivo con fines educativos y autorizados.\e[0m"
 
 EOF
 source ~/.bashrc
 
 # =========================================
-# 8. Limpieza final
+# 10. Finalización
 # =========================================
-echo -e "${GREEN}[✓] Instalación completada. Tu Kali está listo para PNPT.${RESET}"
-echo -e "${YELLOW}Herramientas instaladas en /opt y wordlists en /opt/wordlists${RESET}"
+echo -e "${GREEN}[✓] Instalación completada. PNPT Ready - Ghostface-Bytes${RESET}"
